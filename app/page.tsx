@@ -5,7 +5,7 @@ import { useNotion } from '../context/NotionContext';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  const { subjectOptions, pages } = useNotion();
+  const { subjectOptions } = useNotion();
 
   const router = useRouter();
   const routeToQuizPage = (index: number) => {
