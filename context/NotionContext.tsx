@@ -10,8 +10,20 @@ interface NotionContextType {
 
 const NotionContext = createContext<NotionContextType | undefined>(undefined);
 
-export function NotionProvider({ children, subjectOptions, pages }: { children: ReactNode; subjectOptions: any[]; pages: any[] }) {
-  return <NotionContext.Provider value={{ subjectOptions, pages }}>{children}</NotionContext.Provider>;
+export function NotionProvider({
+  children,
+  subjectOptions,
+  pages,
+}: {
+  children: ReactNode;
+  subjectOptions: any[];
+  pages: any[];
+}) {
+  return (
+    <NotionContext.Provider value={{ subjectOptions, pages }}>
+      {children}
+    </NotionContext.Provider>
+  );
 }
 
 export function useNotion() {

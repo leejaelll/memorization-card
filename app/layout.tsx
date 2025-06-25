@@ -21,7 +21,6 @@ export const metadata: Metadata = {
 };
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
-console.log('🥕 notion', notion);
 
 export default async function RootLayout({
   children,
@@ -30,20 +29,25 @@ export default async function RootLayout({
 }>) {
   const databaseId = process.env.NOTION_DATABASE_ID as string;
   const response = await notion.databases.retrieve({ database_id: databaseId });
-  const queryResponse = await notion.databases.query({ database_id: databaseId });
+  const queryResponse = await notion.databases.query({
+    database_id: databaseId,
+  });
   // 필요한 데이터만 추출
   const subjectProperty = response.properties?.['과목'];
 
-  const subjectOptions = subjectProperty?.type === 'select' ? subjectProperty.select?.options ?? [] : [];
+  const subjectOptions =
+    subjectProperty?.type === 'select'
+      ? subjectProperty.select?.options ?? []
+      : [];
 
   // queryResponse에서 필요한 데이터만 추출
   const pages = queryResponse.results || [];
 
-  // console.log('🥕 queryResponse', queryResponse);
-
   return (
     <html lang='en'>
-      <body className={`${blackHanSans.variable} ${hahmlet.variable} antialiased`}>
+      <body
+        className={`${blackHanSans.variable} ${hahmlet.variable} antialiased`}
+      >
         <NotionProvider subjectOptions={subjectOptions} pages={pages}>
           {children}
         </NotionProvider>

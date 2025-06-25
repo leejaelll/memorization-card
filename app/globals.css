@@ -46,3 +46,38 @@ body {
 .pushable:active .front {
   transform: translateY(-2px);
 }
+
+/* 카드 뒤집기 애니메이션 */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Swiper 커스텀 스타일 */
+.card-swiper {
+  padding-bottom: 60px;
+}
+
+.card-swiper .swiper-button-next,
+.card-swiper .swiper-button-prev {
+  color: #3b82f6;
+}
+
+.card-swiper .swiper-pagination-bullet {
+  background: #3b82f6;
+}
+
+.card-swiper .swiper-pagination-bullet-active {
+  background: #1d4ed8;
+}
